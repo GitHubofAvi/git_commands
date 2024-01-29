@@ -1,0 +1,581 @@
+1. git config --global user.name Avinash //set name who changes any code
+
+2. git config --global user.email prajapatiavinash67@gmail.com //set email who changes any code
+
+3. git config --global user.name  // to see username
+
+4. git config --global user.email // to see user email
+
+5. code . // open vscode ide
+
+6. git init // initialiaze a empty git repository in current directory
+
+7. ls // show non hidden files
+
+8. ls -lart //show listing of total hidden files/folder in current directory with .git folder
+
+9. git status //tell the status of file i.e file is untracked , is unmodified(made not any changes), is staged, is commited, is modified( made changes) 
+
+
+Note: 1.untracked file jab hota hai jab jum koi file add karte hai but usko staging area me nhi dalte means ( git add file_name) commang nhi chalaya else me ye staging area me 	a jaigi
+	2. staging me aane ke baad uss file ko commit karna hota hai after commited ke baad wo unmodified me aa jaigi (jo ki changes me nhi hai) agar isko edited karte hai to 		phir ye modified stage me aa jaigi then save changes kare k liye commit karna hota hai aise lagatar process chalta rehta hai 
+
+
+============================================================
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html  //color red when this file is not in staging ie. untracked mtlb (git add index.html) nhi kiya
+===========================================================
+
+
+10. git add file_name //file which to come to staging area
+
+
+============================================================
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   index.html //color green after running command git add index.html now it comes to staging area
+============================================================
+
+
+11. git commit //save or commited the file stucture of current directory
+
+Note: 
+after run git commit command
+show unexpected msg shown and your typing not working
+To escape from it and write message to git commit: Initial commit (write any message to commit)
+Now click Esc key with (:wq) to escape form web editor interface
+
+
+
+=============================================================
+$ git status
+On branch master
+nothing to commit, working tree clean
+//means sab commited/saved hai 
+=============================================================
+
+
+12. touch file_name.extension (command): create a blank file in current directory
+
+
+==============================================================
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ touch public.htm
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ touch avi.txt
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   avi.php         // color:green which is already added
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        avi.txt
+        public.htm       // color:red which is newly added by command means untracked
+================================================================
+
+
+13. git add -A  (OR) git add .  // to add all files to staging area which are untracked file
+
+
+================================================================
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   avi.php
+        new file:   avi.txt
+        new file:   public.htm  //green color message
+================================================================
+
+
+14. git commit -m "any message to commit" 
+	// -m editor view to escape karta hai agar hum git commit krenge to ye web editor view me open hoga jaha se escape krne k liye Esc ke sath :wq or :WQ karna hota hai
+
+
+================================================================
+after run above command:
+
+$ git commit -m "Added more files"
+[master 5d6824a] Added more files
+ 3 files changed, 3 insertions(+)
+ create mode 100644 avi.php
+ create mode 100644 avi.txt
+ create mode 100644 public.htm
+==================================================================
+
+15. git checkout file_name.extension 
+	// ye tab use kiya jata h agar koi glti se koi changes karta hai/ ya kisi bhi trah se system off ho jata hai ya code modified karke use band kar diya jata hai to 
+          last commited me jane ke liye aisa karna hota hai (means last commited se match krana)
+
+16. git checkout -f  // to match all last commited files
+
+
+===================================================================
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git checkout -f
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+=======================================================================
+
+17. git log  //show the logs of all commited with username and useremail with datetime and commited messages
+
+=======================================================================
+$ git log
+commit 81b93d1f1c301f619f100c065b6e9f061ca840c0 (HEAD -> master)
+Author: Avinash <prajapatiavinash67@gmail.com>
+Date:   Sat Jan 27 23:51:17 2024 +0530
+
+    Added more files
+
+commit 5d6824aed9278ef866539e667ccf065b42229d48
+Author: Avinash <prajapatiavinash67@gmail.com>
+Date:   Sat Jan 27 23:37:07 2024 +0530
+
+    Added more files
+
+commit 541a8c13937d779ee5e9737a0595e06c273b142e
+Author: Avinash <prajapatiavinash67@gmail.com>
+Date:   Sat Jan 27 20:21:09 2024 +0530
+
+    Initial commit
+======================================================================
+
+18. git log -p -1  // show the last 1 commited log where 1 is no. of commited log to show
+
+
+======================================================================
+$ git log -p -2
+commit 81b93d1f1c301f619f100c065b6e9f061ca840c0 (HEAD -> master)
+Author: Avinash <prajapatiavinash67@gmail.com>
+Date:   Sat Jan 27 23:51:17 2024 +0530
+
+    Added more files
+
+diff --git a/index.html b/index.html
+index 9c523c8..9216eda 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,6 @@
+     <title>Document</title>
+ </head>
+ <body>
+-    avi
++    avinash
+ </body>
+ </html>
+\ No newline at end of file
+
+commit 5d6824aed9278ef866539e667ccf065b42229d48
+Author: Avinash <prajapatiavinash67@gmail.com>
+Date:   Sat Jan 27 23:37:07 2024 +0530
+
+    Added more files
+
+diff --git a/avi.php b/avi.php
+new file mode 100644
+index 0000000..101259f
+--- /dev/null
++++ b/avi.php
+@@ -0,0 +1,3 @@
++<?php
++
++echo 134;
+\ No newline at end of file
+diff --git a/avi.txt b/avi.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/public.htm b/public.htm
+new file mode 100644
+index 0000000..e69de29
+===================================================================
+
+
+19. clear // clear current document view
+
+20. git diff  // show only history/log of before modified code/ file and after modified code/file
+
+===================================================================
+$ git diff
+diff --git a/avi.txt b/avi.txt
+index e69de29..76fc713 100644
+--- a/avi.txt
++++ b/avi.txt
+@@ -0,0 +1 @@
++afasdfas           // i made changes
+\ No newline at end of file
+===================================================================
+
+===================================================================	
+$ git diff
+diff --git a/avi.txt b/avi.txt
+index e69de29..76fc713 100644
+--- a/avi.txt
++++ b/avi.txt
+@@ -0,0 +1 @@
++afasdfas
+\ No newline at end of file
+diff --git a/index.html b/index.html
+index 9216eda..dca7532 100644
+--- a/index.html
++++ b/index.html
+@@ -5,7 +5,8 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+-<body>
+-    avinash         //- show remove message/code etc , +  show remove message/code etc
++
++    avinash
++    <p></p>
+ </body>
+ </html>
+\ No newline at end of file
+=======================================================================
+
+21. git diff --staged //compare staging area(after run command git add -A or git add file_name.ext) to last commited code 
+
+22. git commit -a -m "Skipped staging area and fixed <"  
+	//agar bina run command git add -A or git add file_name.ext kiye commit karna ho to aise karna hota hai wheren -a skipped the staging area
+	 isko run krne k baad agar git status kre to nothing to commit, working tree clean ka msg aiga means sab thik hai
+
+=======================================================================
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public.htm
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git commit -a -m "Skipped staging area and fixed <"
+[master 2666c74] Skipped staging area and fixed <
+ 1 file changed, 11 insertions(+)
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+=======================================================================
+
+23. git rm --cached file_name.ext  //remove file from staging area but not from working area
+
+=======================================================================
+$ git rm --cached avi.txt
+rm 'avi.txt'
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    avi.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        avi.txt
+
+Note: you can seen (U) symbol on your avt.txt file
+
+Now if we run git status:
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    avi.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        avi.txt
+
+means staging area se bahar aake untracked me a gya hai ab isko stage me laane k liye git add -A ya git add file_name.ext run krna hoga
+
+======================================================================= 
+
+
+24. git rm file_name.ext //remove file bot from staging area as well as from working area
+
+========================================================================
+$ git rm avi.txt
+rm 'avi.txt' //removed
+========================================================================
+
+
+25. git status -s // display short status message means which file is in staging area or which file in working area or which file is deleted or which file is newly created
+			in case of staging area eg. M(green color) file_name.ext
+			in case of working area eg. M(red color) file_name.ext
+			in case of deletion area eg. D(green color) file_name.ext
+			in case of newly created file eg. ??(red color) file_name.ext
+			in case of newly created file (after added to staging area) eg. A(green color) file_name.ext
+========================================================================
+$ git status -s
+D  avi.txt
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status -s
+ M avi.php  //M is red 
+D  avi.txt  // D is green
+ M public.htm  //M is red 
+
+Note: red is for not in staging area
+
+After run below command (staged area)
+$ git add -A
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git status -s
+M  avi.php //M is red 
+D  avi.txt  // D is green
+M  public.htm  // M is green
+========================================================================
+
+26. touch .gitignore  //create ignore file (which not in use) ie. gitignore
+	*.log  // it is in same directory where gitignore present
+	/logs.log  // it is present in any forder which name we don't know
+	avi_project/   //where avi_project is folder, inside it any file gitignore ignore all files
+
+   Now .gitignore ignore all log file present in any location of current directory (make sure all log file not in staging area)
+   Note: it can be any file not .log file
+
+
+=========================================================================
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+        new file:   abcd.html
+        modified:   avi.php
+        deleted:    avi.txt
+        modified:   public.htm
+
+
+ // you can see no any log file seen here
+
+
+Note: in case of if we add any file not mentioned in gitignore the below message show (message of untracked file of newly added)
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+        new file:   abcd.html
+        deleted:    avi.php
+        deleted:    avi.txt
+        modified:   public.htm
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        avi.php
+
+=========================================================================
+
+27. git branch // show all braches present
+
+28. git branch branch_name  //to create branch (personal use)
+
+29. git checkout switch_to_branch_name  //jis branch me jum switch krna chahte h means default branch set krna
+
+==========================================================================
+$ git branch
+  avi
+* master
+
+Note: * show the main branch is master which is default
+To swich to your branch (ie. avi)
+Command: git checkout avi
+
+eg.  After switched to avi branch:
+
+$ git checkout avi
+Switched to branch 'avi'
+A       .gitignore
+A       abcd.html
+D       avi.php
+D       avi.txt
+M       public.htm
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (avi)
+$ git branch
+* avi
+  master
+
+
+eg. Mene abcd.html ko modify kia (in staging) aur again apne current branch me jana chaha to:
+
+$ git checkout avi
+Already on 'avi'
+M       abcd.html
+
+
+Note: sabse best option ye hai ki aap apna ek branch bna le then jo bhi changes, worked, code kiya hai usko staged, commit kre 
+	isse ye hoga ki changes aapke file/folders (branch you created) me hi hoga master ya others branch me koin changes nhi hoga
+	agar aap master me switch kr kroge to wahan whi code hoga master wala naki aapke dwara add kiye gye branch me
+====================================================================================
+
+
+30. git merge my_created_branch
+	// isse avi branch ka code master branch me add ho jaiga ( where master is current branch)
+        // Do [git merge master] to viseversa ( where avi is current branch)
+
+
+31. git checkout -b your_branch_name
+	// isse ek nayi branch bann jaigi aur aap isme automatically switched  bu ho jainge
+
+
+=====================================================================================
+
+Github:
+Github is hosting services for git repository
+
+Local Repository: codes/directory present in my own pc
+Remote Repository : codes/directory present in hosting platform/server (github)
+=====================================================================================
+
+
+32. git remote add origin https://github.com/GitHubofAvi/git_for_practice.git
+	// this command for to add your local repository to remoter repository where https://github.com/GitHubofAvi/git_for_practice.git is your created remote repository
+
+
+33. git remote 
+ 	// tell the my current remote directory name ie. origin
+
+34. git remote -v
+	// tell the url of remote repo ki aap fetch kaha se kroge or push kaha se
+
+
+=====================================================================================
+$ git remote add origin https://github.com/GitHubofAvi/git_for_practice.git
+
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git remote
+origin   // where origin is my current remote directory name
+
+
+$ git remote -v
+origin  https://github.com/GitHubofAvi/git_for_practice.git (fetch)
+origin  https://github.com/GitHubofAvi/git_for_practice.git (push)
+
+
+=====================================================================================
+
+35. git push origin master  (OR) git push -u origin master
+	// push your master branch code to origin named remote directory
+
+
+=====================================================================================
+$ git push origin master
+Enumerating objects: 42, done.
+Counting objects: 100% (42/42), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (31/31), done.
+Writing objects: 100% (42/42), 3.65 KiB | 934.00 KiB/s, done.
+Total 42 (delta 14), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (14/14), done.
+To https://github.com/GitHubofAvi/git_for_practice.git
+ * [new branch]      master -> master
+
+After this my local code (master branch) added successfully to my created remote directory (origin)
+
+Note: git push origin master run krane k baad agar 
+	[ remote: repository not found 
+	fatal: repository 'https://github.com/GitHubofAvi/git_for_practice.git/' ]
+	not found aaye to isko ssh permission dena hota hai means remote repo ko read write access dena hota hai
+	iske liye (Setting->SSH keys->generating a new SSH key) me jana hota hai
+	then [$ ssh-keygen -t ed25519 -C "your_email@example.com"] isko terminal me run krna hota h
+	iske baad terminal ek public/private rsa key pair krta hai
+	then agar [.ssh/id_ed25519] already exists hoti h to overwrite ka msg ayega [Overwrite (y/n)? 
+	yes karne k baad ek ssh key generate hoti hai usko add krna hota hai
+	add krne k liye  [$ ssh-add c:/Users/YOU/.ssh/id_ed25519] krna hota hai where {c:/Users/YOU] local directory
+	iske baad isko github accound me deploy k liye Adding a new ssh key to github account krna hota h
+	iske liye [$ cat ssh-add c:/Users/YOU/.ssh/id_ed25519] chalana hota hai joki ek ssh public key ko show kra deta hai terminal me
+	then copy this key and paste it to [ssh keys->add new] me add krna hota hai with title name
+
+Note: ssh basically apne remote account/directory ka access apne local computer ko dene ke liye hota hai
+
+
+
+$ git push -u origin avi
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'avi' on GitHub by visiting:
+remote:      https://github.com/GitHubofAvi/git_for_practice/pull/new/avi
+remote:
+To https://github.com/GitHubofAvi/git_for_practice.git
+ * [new branch]      avi -> avi
+branch 'avi' set up to track 'origin/avi'.
+
+=====================================================================================
+
+36. git push 
+	// push to your active branch github code
+
+
+37. git clone repository_url folder_name(optional)
+	// remote repo ko apne local k current directory me jis folder_name me clone karna chahte h
+	 agar folder name nhi dete means only [git clone repositroy_url] dete to ye current directory me jis naam se project (in remote directory) ka naam hai
+	 uss naam se folder banake clone kr deta hai
+
+
+=====================================================================================
+$ git clone https://github.com/GitHubofAvi/email-validity.git avinash_cloned_folder
+Cloning into 'avinash_cloned_folder'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (6/6), done.
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ ls
+abcd.html  avi.php  avinash_cloned_folder/  index.html  log_files/  logs.log  public.htm
+
+=====================================================================================
+
+$ git remote -v
+origin  https://github.com/GitHubofAvi/git_for_practice.git (fetch)
+origin  https://github.com/GitHubofAvi/git_for_practice.git (push)
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git remote add origin https://github.com/GitHubofAvi/git_commands.git
+error: remote origin already exists.
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git remote add new https://github.com/GitHubofAvi/git_commands.git
+
+admin@DESKTOP-VN35P0T MINGW64 ~/OneDrive/Desktop/project (master)
+$ git remote -v
+new     https://github.com/GitHubofAvi/git_commands.git (fetch)
+new     https://github.com/GitHubofAvi/git_commands.git (push)
+origin  https://github.com/GitHubofAvi/git_for_practice.git (fetch)
+origin  https://github.com/GitHubofAvi/git_for_practice.git (push)
+
