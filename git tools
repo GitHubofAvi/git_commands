@@ -546,6 +546,12 @@ branch 'avi' set up to track 'origin/avi'.
 	 uss naam se folder banake clone kr deta hai
 
 
+38. git branch -M master
+	//It means you are renaming the current branch to "master." 
+	The -M option is used to force the rename, even if the new branch name already exists. 
+	This command is often used when you want to rename the default branch of a Git repository to "master" 
+	or if you want to rename the current branch to "master" for any other reason.
+
 =====================================================================================
 $ git clone https://github.com/GitHubofAvi/email-validity.git avinash_cloned_folder
 Cloning into 'avinash_cloned_folder'...
